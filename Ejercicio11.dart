@@ -6,27 +6,79 @@
 // necesarios para poder crear un alumno con todos los datos de forma correcta.
 
 class Persona {
-  var nombre;
-  var apellidos;
-  var dni;
-  var direccion;
-  var cp;
-  var ciudad;
-  var fechaNacimiento;
+  String nombre;
+  String apellidos;
+  String dni;
+  String direccion;
+  int cp;
+  String ciudad;
+  DateTime fechaNacimiento;
 
   Persona(this.nombre, this.apellidos, this.dni, this.direccion, this.cp,
       this.ciudad, this.fechaNacimiento);
 }
 
 class Alumno extends Persona {
-  var codigo;
-  var estudios;
-  var curso;
+  String codigo;
+  String estudios;
+  String curso;
   var _edad;
 
-  Alumno(this.codigo, this.estudios, this.curso, Persona persona)
-      : this._edad = DateTime.now().year - persona.fechaNacimiento.year,
-        super(null, null, null, null, null, null, null);
+  Alumno(this.codigo, this.estudios, this.curso, nombre, apellidos, dni,
+      direccion, cp, ciudad, fechaNacimiento)
+      : super(nombre, apellidos, dni, direccion, cp, ciudad, fechaNacimiento);
+
+  String get getCodigo {
+    return codigo;
+  }
+
+  String get getEstudios {
+    return estudios;
+  }
+
+  String get getCurso {
+    return curso;
+  }
+
+  String get getNombre {
+    return nombre;
+  }
+
+  String get getApellidos {
+    return apellidos;
+  }
+
+  String get getDni {
+    return dni;
+  }
+
+  String get getDireccion {
+    return direccion;
+  }
+
+  int get getCp {
+    return cp;
+  }
+
+  String get getCiudad {
+    return ciudad;
+  }
+
+  DateTime get getFechaNacimiento {
+    return fechaNacimiento;
+  }
+
+  int get getEdad {
+    return DateTime.now().year - fechaNacimiento.year;
+  }
 }
 
-main(List<String> arguments) {}
+main(List<String> arguments) {
+  var chiquillo = new Alumno("007", "DAM", "2º", "Jose", "Chiro", "1111A",
+      "C/La Boca", 52356, "Si u dah", DateTime.utc(1990, 2, 3));
+  String codigo = chiquillo.getCodigo;
+  String nombre = chiquillo.getNombre;
+  String apellido = chiquillo.getApellidos;
+  int edad = chiquillo.getEdad;
+  print("Alumno $codigo, $nombre $apellido, de $edad años de edad.");
+}
