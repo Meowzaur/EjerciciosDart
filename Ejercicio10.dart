@@ -5,18 +5,24 @@
 abstract class Vehiculo {
   var matricula;
   var color;
+
+  String get getMatricula {
+    return matricula;
+  }
+
+  String get getColor {
+    return color;
+  }
 }
 
 class Coche extends Vehiculo {
   var _deposito;
 
-  set deposito(int gasolina) {
-    deposito = gasolina;
-  }
+  Coche(this._deposito) : super();
 
-  int get deposito {
-    return deposito;
-  }
+  set setDeposito(int nuevoDeposito) => _deposito = nuevoDeposito;
+
+  int get getDeposito => _deposito;
 
   bool encendido(bool estado) {
     return estado;
@@ -28,13 +34,17 @@ class Coche extends Vehiculo {
 }
 
 class Motocicleta extends Vehiculo {
+  Motocicleta() : super();
+
   void apoyada() {
     print("La moto no se cae.");
   }
 }
 
 main(List<String> arguments) {
-  var coche = new Coche();
+  var deposito = 50;
+
+  var coche = new Coche(deposito);
   coche.matricula = "11AA";
   coche.color = "rojo";
 
@@ -46,6 +56,6 @@ main(List<String> arguments) {
   coche.repostar();
   moto.apoyada();
 
-  var deposito = 50;
-  print("Gasolina: $deposito");
+  print("Gasolina: ");
+  print(coche.getDeposito);
 }

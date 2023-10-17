@@ -6,13 +6,9 @@ class Coche {
   var color;
   var _deposito;
 
-  set deposito(int gasolina) {
-    deposito = gasolina;
-  }
+  set deposito(int nuevoDeposito) => _deposito = nuevoDeposito;
 
-  int get deposito {
-    return deposito;
-  }
+  int get deposito => _deposito;
 
   bool encendido(bool estado) {
     return estado;
@@ -31,6 +27,7 @@ main(List<String> arguments) {
   coche.encendido(true);
   coche.repostar();
 
-  var deposito = 50;
-  print("Gasolina: $deposito");
+  coche.deposito = 50;
+  print("Gasolina: ");
+  print(coche.deposito);
 }
